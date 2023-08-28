@@ -1,15 +1,15 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
-import {exec} from "k6/execution";
+import exec from "k6/execution";
 
 export const users = JSON.parse(open("data.json"));
 
 export const options = {
-  scenerios:{
+  scenarios:{
     accountCreate:{
         executor: "shared-iterations",
         vus:5,
-        iterations: 10
+        iterations: users.length
     },
 },
 }
